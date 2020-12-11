@@ -380,7 +380,13 @@ function Shot2IsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
 	return fn(new Shot(n, n, n,n));
   }
+  function WalkerIsObject(fn) {
+	var n = Math.floor(Math.random() * 6 + 1)
+	return fn(new Walker(n, n, n,n));
+  }
+
 module.exports =Shot2IsObject;
 module.exports =CannonIsObject;
 module.exports =OilIsObject;
 module.exports =ShotIsObject;
+module.exports =WalkerIsObject;
