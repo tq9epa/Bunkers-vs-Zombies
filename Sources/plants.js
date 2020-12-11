@@ -234,6 +234,7 @@ function checkZombieOut() {
 				isPlaying = false;
 				alert("Zombies killed the civilians!");
 				document.body.removeChild(canvas);
+				setAllToBasic();
 				Start();
 				
 			}

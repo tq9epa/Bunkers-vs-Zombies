@@ -1,8 +1,12 @@
 //canvas section
 function Start() {
+	
 	canvasFunction();
 	document.getElementById("startButton").style.display = "none";
+	endGame = false;
+	
 }
+
 function canvasFunction() {
 	gameArea = {
 		background: "grey",
@@ -214,7 +218,13 @@ function canvasFunction() {
 			shots[i].move();
 		}
 	};
-
+	function setAllToBasic() {
+		spawnTime = 6000;
+		gettingHarder = 20;
+		isPlaying = true;
+		numborOfZombiesOut = 0;
+		primaryZombie = 0;
+	}
 	function check() {
 
 		checkZombieOut();
@@ -274,6 +284,8 @@ function canvasFunction() {
 	};
 	let spawnTime = 6000;
 	let gettingHarder = 20;
+
+	
 	function seeder() {
 
 		/* Add new zombie every 10 seconds*/
