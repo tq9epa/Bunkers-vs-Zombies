@@ -128,8 +128,9 @@ wall.prototype = {
 let primaryZombie = 0;
 walker = function (x, y) {
 	let numberOfRand = Math.floor(Math.random() * 2);
-	if (primaryZombie > 20) {
+	if (primaryZombie > 10) {
 		if (numberOfRand == 0) {
+			primaryZombie++;
 			this.healt = 3;
 			this.x = x;
 			this.y = y;
@@ -140,6 +141,7 @@ walker = function (x, y) {
 			this.image = new Image();
 			this.image.src = "images/ZombieHd.png";
 		} else {
+			primaryZombie++;
 			this.healt = 4;
 			this.x = x;
 			this.y = y;
