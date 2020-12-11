@@ -1,8 +1,6 @@
 
 
 //Game section
-let endGame = false;
-
 oilrig = function (x, y) {
 	this.x = Math.floor(x / gameArea.cubeWidth) * gameArea.cubeWidth;
 	this.y = Math.floor(y / gameArea.cubeHeight) * gameArea.cubeHeight;
@@ -397,24 +395,9 @@ function OilIsObject(fn) {
 }
 function ShotIsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
-<<<<<<< HEAD
-	return fn(new Shot(n, n, n,n));
-  }
-  function WalkerIsObject(fn) {
-	var n = Math.floor(Math.random() * 6 + 1)
-	return fn(new Walker(n, n, n,n));
-  }
-
-module.exports =Shot2IsObject;
-module.exports =CannonIsObject;
-module.exports =OilIsObject;
-module.exports =ShotIsObject;
-module.exports =WalkerIsObject;
-=======
 	return fn(new Shot(n, n, n, n));
 }
 module.exports = Shot2IsObject;
 module.exports = CannonIsObject;
 module.exports = OilIsObject;
 module.exports = ShotIsObject;
->>>>>>> e6487f3a36738986df2d4fbc68d035a0b2a8079b
