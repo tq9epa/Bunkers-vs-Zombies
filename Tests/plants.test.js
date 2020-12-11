@@ -32,4 +32,4 @@ test('Shot2IsObject with a number', () => {
     WalkerIsObject(mock);
     expect(mock).toBeCalledWith(expect.any(Object));
   });
-
+ 
