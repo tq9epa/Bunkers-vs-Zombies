@@ -99,7 +99,7 @@ threewayturret.prototype = {
 	checkShot: function () {
 		if (Date.now() - this.lastShot >= 6000) {
 			for (let j in zombies) {
-				if (zombies[j].y == this.y || zombies[j].y == this.y + 80 || zombies[j].y == this.y - 80 ) {
+				if (zombies[j].y == this.y || zombies[j].y == this.y + 80 || zombies[j].y == this.y - 80) {
 					shots.push(new Shot(this.x + 2 * gameArea.cubeWidth / 2, this.y + gameArea.cubeHeight / 2 - 16, 5, 0, this.attack));
 					shots.push(new Shot(this.x + 2 * gameArea.cubeWidth / 2, this.y - 80 + gameArea.cubeHeight / 2 - 16, 5, 0, this.attack));
 					shots.push(new Shot(this.x + 2 * gameArea.cubeWidth / 2, this.y + 80 + gameArea.cubeHeight / 2 - 16, 5, 0, this.attack));
@@ -110,25 +110,49 @@ threewayturret.prototype = {
 		}
 	}
 };
-wall  = function (x, y) {
-    this.x = Math.floor(x / gameArea.cubeWidth) * gameArea.cubeWidth;
-    this.y = Math.floor(y / gameArea.cubeHeight) * gameArea.cubeHeight;
-    this.start = Date.now();
-    this.healt = 30;
-    oil -= this.cost;
-    this.image = new Image();
-    this.image.src = "images/Wall.png";
+wall = function (x, y) {
+	this.x = Math.floor(x / gameArea.cubeWidth) * gameArea.cubeWidth;
+	this.y = Math.floor(y / gameArea.cubeHeight) * gameArea.cubeHeight;
+	this.start = Date.now();
+	this.healt = 30;
+	oil -= this.cost;
+	this.image = new Image();
+	this.image.src = "images/Wall.png";
 };
 wall.prototype = {
-    cost: 100,
-    draw: function () {
-        context.drawImage(this.image, this.x, this.y, gameArea.cubeWidth, gameArea.cubeHeight);
-    }
+	cost: 100,
+	draw: function () {
+		context.drawImage(this.image, this.x, this.y, gameArea.cubeWidth, gameArea.cubeHeight);
+	}
 };
+let primaryZombie = 0;
 walker = function (x, y) {
-	
 	let numberOfRand = Math.floor(Math.random() * 2);
-	if(numberOfRand==0) {
+	if (primaryZombie > 20) {
+		if (numberOfRand == 0) {
+			this.healt = 3;
+			this.x = x;
+			this.y = y;
+			this.dx = -0.5; //sebessség
+			this.dy = 0;
+			this.lastAttack = false;
+			this.attack = 1;
+			this.image = new Image();
+			this.image.src = "images/ZombieHd.png";
+		} else {
+			this.healt = 4;
+			this.x = x;
+			this.y = y;
+			this.dx = -0.5; //sebessség
+			this.dy = 0;
+			this.lastAttack = false;
+			this.attack = 2;
+			this.image = new Image();
+			this.image.src = "images/monster.png";
+		}
+	}
+	else {
+		primaryZombie++;
 		this.healt = 3;
 		this.x = x;
 		this.y = y;
@@ -138,17 +162,8 @@ walker = function (x, y) {
 		this.attack = 1;
 		this.image = new Image();
 		this.image.src = "images/ZombieHd.png";
-	} else {
-		this.healt = 4;
-		this.x = x;
-		this.y = y;
-		this.dx = -0.5; //sebessség
-		this.dy = 0;
-		this.lastAttack = false;
-		this.attack = 2;
-		this.image = new Image();
-		this.image.src = "images/monster.png";
 	}
+
 };
 walker.prototype = {
 	draw: function () {
@@ -177,12 +192,12 @@ walker.prototype = {
 								bunkers.splice(i, 1);
 								this.lastAttack = false;
 								for (i in zombies) {
-									
-                                    if(zombies[i].x == this.x && this.y == zombies[i].y){
+
+									if (zombies[i].x == this.x && this.y == zombies[i].y) {
 										zombies[i].dx = -0.5;
 									}
-                                }
-								
+								}
+
 							}
 						}
 					}
@@ -190,7 +205,7 @@ walker.prototype = {
 			}
 		}
 	},
-	
+
 };
 Shot = function (x, y, dx, dy, attack) {
 	this.sugar = 5;
@@ -202,9 +217,9 @@ Shot = function (x, y, dx, dy, attack) {
 
 };
 
-let numborOfZombiesOut=0;
+let numborOfZombiesOut = 0;
 
-function checkZombieOut () {
+function checkZombieOut() {
 	for (j in zombies) {
 		let toto = zombies[j];
 
@@ -212,9 +227,9 @@ function checkZombieOut () {
 
 			console.log("Zombies out!");
 			zombies.splice(j, 1);
-			numborOfZombiesOut +=1;
-			if(numborOfZombiesOut==5){
-				isPlaying=false;
+			numborOfZombiesOut += 1;
+			if (numborOfZombiesOut == 5) {
+				isPlaying = false;
 				alert("Zombies killed the civilians!");
 			}
 			return true;
@@ -366,21 +381,21 @@ Shot2.prototype = {
 
 function Shot2IsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
-	return fn(new Shot2(n, n, n,n));
-  }
-  function CannonIsObject(fn) {
+	return fn(new Shot2(n, n, n, n));
+}
+function CannonIsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
-	return fn(new cannon(n, n, n,n));
-  }
-  function OilIsObject(fn) {
+	return fn(new cannon(n, n, n, n));
+}
+function OilIsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
-	return fn(new Oil(n, n, n,n));
-  }
-  function ShotIsObject(fn) {
+	return fn(new Oil(n, n, n, n));
+}
+function ShotIsObject(fn) {
 	var n = Math.floor(Math.random() * 6 + 1)
-	return fn(new Shot(n, n, n,n));
-  }
-module.exports =Shot2IsObject;
-module.exports =CannonIsObject;
-module.exports =OilIsObject;
-module.exports =ShotIsObject;
+	return fn(new Shot(n, n, n, n));
+}
+module.exports = Shot2IsObject;
+module.exports = CannonIsObject;
+module.exports = OilIsObject;
+module.exports = ShotIsObject;
