@@ -1,6 +1,8 @@
 
 
 //Game section
+let endGame = false;
+
 oilrig = function (x, y) {
 	this.x = Math.floor(x / gameArea.cubeWidth) * gameArea.cubeWidth;
 	this.y = Math.floor(y / gameArea.cubeHeight) * gameArea.cubeHeight;
