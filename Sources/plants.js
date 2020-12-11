@@ -233,6 +233,9 @@ function checkZombieOut() {
 			if (numborOfZombiesOut == 5) {
 				isPlaying = false;
 				alert("Zombies killed the civilians!");
+				document.body.removeChild(canvas);
+				Start();
+				
 			}
 			return true;
 

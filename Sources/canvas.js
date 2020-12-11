@@ -279,7 +279,7 @@ function canvasFunction() {
 		/* Add new zombie every 10 seconds*/
 		if (primaryZombie > gettingHarder && spawnTime > 0) {
 			spawnTime -= 1000;
-			gettingHarder += 20;
+			gettingHarder += 10;
 			console.log(spawnTime);
 		}
 		if (Date.now() - lastZombieAdd >= spawnTime) { //newzombie
