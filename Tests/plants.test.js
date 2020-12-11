@@ -1,8 +1,10 @@
 
-const Shot2IsObject = require('./plants');
-const CannonIsObject = require('./plants');
-const OilIsObject = require('./plants');
-const ShotIsObject = require('./plants');
+const Shot2IsObject = require('../sources/plants.js');
+const CannonIsObject = require('../sources/plants.js');
+const OilIsObject = require('../sources/plants.js');
+const ShotIsObject = require('.../sources/plants.js');
+const WalkerIsObject = require('.../sources/plants.js');
+
 
 
 test('Shot2IsObject with a number', () => {
@@ -25,4 +27,9 @@ test('Shot2IsObject with a number', () => {
     ShotIsObject(mock);
     expect(mock).toBeCalledWith(expect.any(Object));
   });
-
+  test('ShotIsObject with a number', () => {
+    const mock = jest.fn();
+    WalkerIsObject(mock);
+    expect(mock).toBeCalledWith(expect.any(Object));
+  });
+ 
