@@ -364,3 +364,23 @@ Shot2.prototype = {
 	},
 };
 
+function Shot2IsObject(fn) {
+	var n = Math.floor(Math.random() * 6 + 1)
+	return fn(new Shot2(n, n, n,n));
+  }
+  function CannonIsObject(fn) {
+	var n = Math.floor(Math.random() * 6 + 1)
+	return fn(new cannon(n, n, n,n));
+  }
+  function OilIsObject(fn) {
+	var n = Math.floor(Math.random() * 6 + 1)
+	return fn(new Oil(n, n, n,n));
+  }
+  function ShotIsObject(fn) {
+	var n = Math.floor(Math.random() * 6 + 1)
+	return fn(new Shot(n, n, n,n));
+  }
+module.exports =Shot2IsObject;
+module.exports =CannonIsObject;
+module.exports =OilIsObject;
+module.exports =ShotIsObject;
