@@ -130,7 +130,7 @@ function canvasFunction() {
 		
 		isPlaying=false;
 		ticks=0;
-		oil=10000;
+		oil=100;
 		lastZombieAdd=Date.now();
 		
 		/* Arrays */
