@@ -1,5 +1,20 @@
 //canvas section
+
 function Start() {
+    var myVar = setInterval(myTimer, 240000);
+
+    function myTimer() {
+     
+        alert("Congratulations, you won!");
+        for(i in zombies){
+            zombies[i].dx=0;
+            endGame=true;
+        }
+    }
+
+    function myStopFunction() {
+    clearInterval(myVar);
+    }
 	canvasFunction();
 	document.getElementById("startButton").style.display = "none";
 }
@@ -278,10 +293,10 @@ function canvasFunction() {
 
 		/* Add new zombie every 10 seconds*/
 		if (primaryZombie > gettingHarder && spawnTime > 1000) {
-			spawnTime - 1000;
+			spawnTime -= 1000;
 			gettingHarder += 20;
 		}
-		if (Date.now() - lastZombieAdd >= spawnTime) { //newzombie
+		if (Date.now() - lastZombieAdd >= spawnTime && !endGame) { //newzombie
 			let vonal = Math.floor(Math.random() * 10);
 			zombies.push(new walker((gameArea.numX * gameArea.cubeWidth + 40), vonal * gameArea.cubeHeight));
 			lastZombieAdd = Date.now();
