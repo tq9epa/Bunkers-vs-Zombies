@@ -277,7 +277,7 @@ function canvasFunction() {
 		
 		/* Add new zombie every 10 seconds*/
 		
-		if(Date.now()-lastZombieAdd>=1000){ //newzombie
+		if(Date.now()-lastZombieAdd>=5000){ //newzombie
 			let vonal=Math.floor(Math.random()*10);
 			zombies.push(new walker((gameArea.numX*gameArea.cubeWidth+40),vonal*gameArea.cubeHeight));
 			lastZombieAdd=Date.now();
