@@ -380,7 +380,6 @@ Shot2.prototype = {
 		this.y += this.dy;
 		this.dy++;
 		this.life--;
-		console.log(this.life);
 	},
 };
 
